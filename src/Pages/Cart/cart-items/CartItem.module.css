@@ -1,0 +1,26 @@
+.cart_item{
+    display: flex;
+    font-family:Arial, Helvetica, sans-serif !important;
+    font-size: 16px !important;
+    padding: 5px;
+    max-width: 3505px;
+}
+.buttons{
+    display: flex;
+    background-color: #fafafa;
+    align-items: center;
+    justify-content: center;
+}
+.buttons p{
+    width: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 4px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.buttons input{
+    width:20px;
+    border:none;
+    font-size: 20px;
+}

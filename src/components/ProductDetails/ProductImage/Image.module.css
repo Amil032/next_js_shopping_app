@@ -1,0 +1,40 @@
+.paging{
+    display: flex !important;
+    width: 80% !important;
+    margin: 0 auto;
+    overflow-x: scroll;
+    padding: 0 10px;
+}
+.paging li{
+    margin: 5px;
+    list-style: none;
+    
+}
+
+.paging::-webkit-scrollbar-button {
+    /* width: 10% !important; */
+  }
+  .paging::-webkit-scrollbar {
+    display: block;
+    height: 8px;
+}
+.paging::-webkit-scrollbar-track {
+    background: transparent;
+}
+    
+.paging::-webkit-scrollbar-thumb {
+    background-color: red;
+    border-right: none;
+    border-left: none;
+    border-radius: 5px;
+}
+
+.paging::-webkit-scrollbar-track-piece:end {
+    background: transparent;
+    margin-bottom: 10px; 
+}
+
+.paging::-webkit-scrollbar-track-piece:start {
+    background: transparent;
+    margin-top: 10px;
+}

@@ -1,0 +1,24 @@
+/* .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+} */
+.slider {
+  width: 100%;
+  margin-left: 5px;
+}
+.subcategory {
+  width: 100%;
+}
+
+.catalogueSLiderWrapper {
+  display: flex;
+  width: 95%;
+  max-width: 1200px;
+  padding: 0;
+  background-color: #e5e5e5;
+  position: relative;
+}

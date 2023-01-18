@@ -1,0 +1,36 @@
+.container{
+    display:flex;
+    position: sticky;
+    background-color: #3c3f42;
+    top:0px;
+    height: 64px;
+    color: white;
+    justify-content: center;
+    z-index: 4;
+    
+}
+.innerContainer{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+
+}
+
+.search{
+    display: flex;
+    align-items: center;
+    min-width: 314px;
+    background-color: #232222;
+    justify-content: center;
+    flex: 1;
+    margin-right: 20px;
+}
+.account{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

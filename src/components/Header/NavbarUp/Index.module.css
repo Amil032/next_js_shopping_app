@@ -1,0 +1,39 @@
+.upperNavbar{
+    display:flex;
+    justify-content: space-between;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0px auto;
+    align-items: center;
+}
+.list{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin-right: 10px;
+    flex-wrap: wrap;
+}
+.list li{
+    margin:0 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+.list li:hover{
+    cursor: pointer;
+    opacity: 90%;
+}
+.contact{
+    display: flex;
+    align-items: center;
+}
+
+.time{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    
+}
+.time p{
+    margin: 0 0 5px 0;
+}

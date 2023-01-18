@@ -1,0 +1,22 @@
+.catalogue{
+    background-color: white;
+    min-width: 314px;
+    padding: 0;
+}
+.category_name{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.category_name p{
+  margin: 0px;
+}
+.subcategory_name{
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 1500px) {
+    .category {
+      display: none;
+    }
+  }

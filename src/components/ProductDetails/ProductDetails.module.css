@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    width:100%;
+    /* background-color: red; */
+    
+}
+.image{
+    height:500px;
+    width:40%;
+    padding:10px;
+}
+@media screen and (max-width: 900px) {
+    .conainer{
+        display: flex;
+        flex-direction: column;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+    }
+    .image{
+        width: 100%;
+        height: 300px;
+    }
+
+  }

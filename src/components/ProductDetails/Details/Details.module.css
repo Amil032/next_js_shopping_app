@@ -1,0 +1,43 @@
+.productName{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #232222;
+    font-size: 24px;
+}
+.action_buttons{
+   display: flex; 
+   justify-content: space-between; 
+   align-items:center;
+   width: 600px; 
+}
+.addtocart{
+    width: 35%;
+}
+.buttons{
+    display: flex;
+    flex:1;
+    width: 40%;
+    justify-content: space-between;
+    margin-left: 20px;
+    
+}
+@media screen and (max-width: 900px) {
+    .main_conainer{
+        display: flex;
+        flex-direction: column;
+    }
+    .action_buttons{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width:100%;
+       
+    }
+    .addtocart{
+        width: 80%;
+    }
+    .buttons{
+        width: 80%;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+  }

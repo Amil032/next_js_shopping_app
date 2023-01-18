@@ -1,0 +1,18 @@
+.container{
+    display: flex;
+    flex-direction: column;
+   background-color: #232222;
+   color: white;
+   margin-top: 100px;
+}
+.upperFooter{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 200px;
+}
+.lowerFooter{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}

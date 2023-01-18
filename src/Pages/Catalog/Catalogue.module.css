@@ -1,0 +1,8 @@
+.catalogue_wrapper{
+ width: 30%;
+}
+@media screen and (max-width: 900px) {
+    .catalogue_wrapper{
+      width: 100%;
+    }
+}
