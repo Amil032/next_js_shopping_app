@@ -1,0 +1,22 @@
+.main_container {
+  display: flex;
+  width: 100%;
+  background-color: antiquewhite;
+  overflow: hidden;
+  margin-left: 20px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+  margin-top: 20px;
+  background-color: azure;
+}
+.common {
+  display: flex;
+  width: 100%;
+  margin-bottom: 40px;
+}
+.common > div {
+  width: 50%;
+}
