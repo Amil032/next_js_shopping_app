@@ -60,6 +60,7 @@ export const AddProducts = () => {
     }
     return (
         <div className={[classes.main_container].join(" ")} >
+            <h1 style={{ margin: '0 auto' }}>Add Product</h1>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={[classes.name, classes.common].join(" ")}>
                     <div><TextField name='name' id="name" label="Product name" variant="outlined" onChange={changeHandler} /></div>

@@ -3,7 +3,7 @@ import classes from './index.module.css'
 export const SideBar = () => {
     return (
         <div className={classes.main_container}>
-            <ul>
+            <ul className={classes.list}>
                 <li>Products</li>
                 <li>Categories</li>
                 <li>Orders</li>
