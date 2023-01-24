@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Slider } from '../../components/Slider/Slider'
 import { Catalog } from '../../components/categories/Catalog'
 import { SubCategories } from '../../components/categories/SubCategories'
@@ -7,15 +7,16 @@ import { BestSellingProducts } from '../../components/BestSelling/BestSellingPro
 import classes from './Home.module.css'
 import { SubCategory } from '../../consts/types/types'
 import { Category } from '../../types/types'
+import { getCategories } from '../../api/services/categories.service'
+import { Product } from '../../../pages/api/admin/upload'
 interface Props {
-  categories: Category[]
+  categories: Category[];
+  products: Product[]
 }
-export const Home: React.FunctionComponent<Props> = ({ categories }) => {
+export const Home: React.FunctionComponent<Props> = ({ categories, products }) => {
   const [show, setShow] = useState(false)
   const [category, setCategory] = useState<SubCategory[] | null>(null)
-
-  const a = useState(false)
-  console.log(categories)
+  console.log(products, 'home page')
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }} className={classes.container}>
       <div className={classes.catalogueSLiderWrapper}>
@@ -29,8 +30,8 @@ export const Home: React.FunctionComponent<Props> = ({ categories }) => {
           </div>
         )}
       </div>
-      <NewProduct />
-      <BestSellingProducts />
+      <NewProduct products={products} />
+      <BestSellingProducts products={products} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from 'axios';
+import { instance } from '../axios';
 
-export const bestsellingService = async () => {
-  const data = await axios.get('/movies')
-  const products = await data.data
-  return products
-}
+export const getAllProducts = async () => {
+  const products = await instance.get('/api/products');
+  return products.data;
+};

@@ -1,31 +1,47 @@
+import { FileDownloadSharp } from '@mui/icons-material';
 import { Button, Checkbox, FormControlLabel, FormGroup, IconButton, SelectChangeEvent, TextField } from '@mui/material';
-import React, { ChangeEvent, ChangeEventHandler, FormEvent, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { fileUploader } from '../../api/services/fileUpload.service';
+import { CategoryProps } from '../../types/types';
 import { DropDown } from '../drop-down-list';
 import classes from "./index.module.css"
 interface Fileds {
     name: string;
     price: number;
+    count: number;
     description: string;
     category: string;
     subCategory: string;
-    isNewProduct: boolean;
-    isBestSelling: boolean;
+    isNewproduct: boolean;
+    isBestselling: boolean;
 }
-export const AddProducts = () => {
+interface Props {
+    categories: CategoryProps
+}
+export const AddProducts = ({ categories }: Props) => {
     const [file, setFile] = useState<File>();
     const [selectedImage, setSelectedImage] = useState('')
     const [isSelectedImage, setIsSelectedImage] = useState(false)
+    const [sub, setSub] = useState([])
     const [fields, setfields] = useState<Fileds>({
         name: '',
         price: 0,
+        count: 0,
         description: '',
         category: '',
         subCategory: '',
-        isNewProduct: false,
-        isBestSelling: false
+        isNewproduct: false,
+        isBestselling: false,
     })
-    const changeHandler = (e: any) => {
+    const a = categories.categories.find(item => item.description === fields.category)
+    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.type === 'checkbox') {
+            const { name, checked } = e.target
+            return setfields(prev => {
+                console.log(fields)
+                return { ...prev, [name]: checked }
+            })
+        }
         if (!e.target.files) {
             const { name, value } = e.target
             return setfields(prev => {
@@ -36,16 +52,7 @@ export const AddProducts = () => {
         setFile(e.target.files[0]);
         setSelectedImage(URL.createObjectURL(e.target.files[0]))
     }
-    const checkBoxHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, checked } = e.currentTarget
-        setfields(prev => {
-            return {
-                ...prev,
-                [name]: checked
-            }
-        })
-    }
-    const submitHandler = (e: React.SyntheticEvent) => {
+    const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData();
         if (file) {
@@ -58,27 +65,29 @@ export const AddProducts = () => {
             fileUploader(formData);
         }
     }
+
     return (
         <div className={[classes.main_container].join(" ")} >
             <h1 style={{ margin: '0 auto' }}>Add Product</h1>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={[classes.name, classes.common].join(" ")}>
                     <div><TextField name='name' id="name" label="Product name" variant="outlined" onChange={changeHandler} /></div>
-                    <div><TextField name='price' label="price" onChange={changeHandler} /></div>
+                    <div><TextField name='price' type="number" label="price" onChange={changeHandler} /></div>
+                    <div><TextField name='count' type="number" label="Count" onChange={changeHandler} /></div>
                 </div>
                 <div className={[classes.category, classes.common].join(" ")}>
                     <div>
-                        <DropDown data={top100Films} categoryName='category' category={fields.category} handleChange={changeHandler} />
+                        <DropDown data={categories.categories} categoryName='category' category={fields.category} handleChange={changeHandler} />
                     </div>
                     <div>
-                        <DropDown data={top100Films} categoryName='subCategory' category={fields.subCategory} handleChange={changeHandler} />
+                        <DropDown data={a?.sub_categories} categoryName='subCategory' category={fields.subCategory} handleChange={changeHandler} />
                     </div>
                 </div>
                 <div className={[classes.description, classes.common].join(" ")}>
                     <div>
                         <TextField
                             id="outlined-multiline-static"
-                            label="Multiline"
+                            label="Description"
                             multiline
                             rows={4}
                             name='description'
@@ -87,11 +96,11 @@ export const AddProducts = () => {
                     </div>
                     <div>
                         <FormGroup>
-                            <FormControlLabel name='isNewProduct' control={<Checkbox />} label="newproducts"
-                                onChange={checkBoxHandler}
+                            <FormControlLabel name='isNewproduct' control={<Checkbox onChange={changeHandler} />}
+                                label="newproducts"
                             />
-                            <FormControlLabel name='isBestSelling' control={<Checkbox />} label="bestselling"
-                                onChange={checkBoxHandler}
+                            <FormControlLabel name='isBestselling' control={<Checkbox onChange={changeHandler} />}
+                                label="bestselling"
                             />
                         </FormGroup>
                     </div>
@@ -102,7 +111,6 @@ export const AddProducts = () => {
                             onChange={changeHandler}
                             hidden
                             disabled={isSelectedImage}
-
                         />
                         <div style={{ height: "100px", display: 'flex', alignItems: "center", border: "1px solid red", padding: '5px' }}>
                             {file ? file.name : 'select image'}
@@ -110,17 +118,10 @@ export const AddProducts = () => {
                         <img src={`${selectedImage}`} width="100px" />
                     </div>
                 </label>
-                <Button type='submit' >Submit</Button>
+                <Button type='submit' variant='contained' sx={{ width: 100, margin: '0 auto' }} >Submit</Button>
             </form>
 
         </div>
     );
 };
-const top100Films = [
-    { title: 'The Shawshank Redemption', year: 1994 },
-    { title: 'The Godfather', year: 1972 },
-    { title: 'The Godfather: Part II', year: 1974 },
-    { title: 'The Dark Knight', year: 2008 },
-    { title: '12 Angry Men', year: 1957 },
-    { title: "Schindler's List", year: 1993 },
-    { title: 'Pulp Fiction', year: 1994 }]
+

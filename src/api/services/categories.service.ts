@@ -1,3 +1,6 @@
-import { instance } from '../axios'
+import { instance } from '../axios';
 
-export const getCategories = () => instance.get('/categories')
+export const getCategories = async () => {
+  let z = await instance.get('/api/category');
+  return z.data;
+};

@@ -11,15 +11,17 @@ import { NewProducts } from '../../consts/products'
 import { addToCart, removeFromCart, selectCart } from '../../store/slices/addToCart'
 import { AddToFavorite } from '../favorite/AddToFavorite'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { useRouter } from 'next/router'
+import { Product } from '../../../pages/api/admin/upload'
+import { ConstructionOutlined } from '@mui/icons-material'
+import Image from 'next/image'
 interface Props {
-  cardItem: NewProducts
+  cardItem: Product
 }
 
 export const CardElement = ({ cardItem }: Props) => {
   const router = useRouter();
-  function clickHandler(id: string) {
+  function clickHandler(id: string | undefined) {
     router.push(`/blog/${id}`)
   }
 
@@ -33,21 +35,26 @@ export const CardElement = ({ cardItem }: Props) => {
     }
   }
   const products = useSelector(selectCart)
-  const check = products.find((item) => item.id === cardItem.id)
+  const check = products.find((item) => item._id === cardItem._id)
+  console.log(cardItem.imageUrl, 'imageurl', cardItem);
   return (
     <Card sx={{ width: '317px', margin: '5px 20px' }}>
       <CardHeader action={<AddToFavorite productId={'5'} />} />
       <CardMedia
         component='img'
         height='250'
-        src={cardItem.source}
+        src={cardItem.imageUrl.split('public')[1]}
+        // image={cardItem.imageUrl}
         alt='Paella dish'
         sx={{ width: '45%', margin: '0 auto', objectFit: 'contain' }}
-        onClick={clickHandler.bind(this, cardItem.id)}
+        onClick={clickHandler.bind(this, cardItem._id)}
       />
       <CardContent>
         <Typography variant='body2' color='text.secondary'>
           {cardItem.description}
+        </Typography>
+        <Typography variant='body2' color='text.secondary'>
+          {cardItem.price}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

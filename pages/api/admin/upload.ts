@@ -2,31 +2,24 @@ import formidable from 'formidable';
 import { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 import fs from 'fs/promises';
+import { readFile } from '../../../api-helper/utils/readFile';
+import { setProducts } from '../../../api-helper/controller/product-controller';
+export type Product = {
+  name: string;
+  price: number;
+  count: number;
+  description: string;
+  imageUrl: string;
+  category: string;
+  subCategory: string;
+  isNewproduct: boolean;
+  isBestselling: boolean;
+  _id?: string;
+};
 export const config = {
   api: {
     bodyParser: false
   }
-};
-const readFile = (req: NextApiRequest, saveLocally?: boolean): Promise<{ fields: formidable.Fields; files: formidable.Files }> => {
-  const options: formidable.Options = {};
-
-  if (saveLocally) {
-    options.uploadDir = path.join(process.cwd() + '/public' + '/images');
-    options.filename = (name, ext, part, form) => {
-      return Date.now().toString() + '_' + part.originalFilename;
-    };
-  }
-  const form = formidable(options);
-  return new Promise((resolve, reject) => {
-    form.parse(req, (err, fields, files) => {
-      if (err) {
-        console.log('error happend');
-        reject(err);
-      }
-      console.log(fields);
-      resolve({ fields, files });
-    });
-  });
 };
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
@@ -36,6 +29,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     } catch (error) {
       await fs.mkdir(path.join(process.cwd() + '/public', '/images'));
     }
-  await readFile(req, true);
-  res.status(200).json({ done: 'OK' });
+
+  let z = await readFile(req, '/public/images', true);
+  console.log(z.fields);
+  console.log({ ...z.files.file }.filepath);
+  setProducts({ ...z.fields, imageUrl: { ...z.files.file }.filepath }, res);
 }

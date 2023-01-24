@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Category from '../models/Category';
 import { connectToDatabase } from '../utils/connectToDataBase';
 
-export const addCategory = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { description, icon_source, sub_categories } = req.body;
+export const addCategory = async (data: any, res: NextApiResponse) => {
+  const { description, icon_source, sub_categories } = data;
   let category;
   try {
     category = new Category({ description, icon_source, sub_categories });

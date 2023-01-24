@@ -15,7 +15,7 @@ interface Props {
 }
 export const DropDown: FC<Props> = ({ data, categoryName, category, handleChange }) => {
 
-
+    console.log(data)
 
     return (
         <div>
@@ -28,9 +28,9 @@ export const DropDown: FC<Props> = ({ data, categoryName, category, handleChange
                     onChange={handleChange}
                     name={categoryName}
                 >
-                    {data.map((item: any, index: number) => (
-                        <MenuItem value={item.title} key={index}>
-                            {item.title}
+                    {data?.map((item: any, index: number) => (
+                        <MenuItem value={item.description} key={index}>
+                            {item.description}
                         </MenuItem>
                     ))}
                 </Select>
