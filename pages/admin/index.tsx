@@ -5,9 +5,10 @@ import { AddProducts } from '../../src/components/admin/products/AddProducts';
 import { Wrapper } from '../../src/components/admin/wrapper/Wrapper';
 import { CategoryProps } from '../../src/types/types';
 import Search from '../../src/components/Header/NavbarDown/Search';
-import { Table } from '../../src/components/admin/table/Table';
+import { Tables } from '../../src/components/admin/table/Table';
 import { getAllProducts } from '../../src/api/services/products.service';
 import { Product } from '../api/admin/upload';
+import { PaginationControlled } from '../../src/components/admin/pagination/Pagination';
 interface Props {
   categories: CategoryProps
   products: { products: Product[] }
@@ -21,7 +22,12 @@ export default function Admin({ categories, products }: Props) {
           <Search width="50%" />
           <AddProducts categories={categories} />
         </div>
-        <Table products={products.products} />
+        <div style={{ height: '80%', padding: '40px 20px', overflowY: 'scroll', marginTop: '20px' }}>
+          <Tables products={products.products} />
+        </div>
+        <div style={{ margin: '0 auto' }}>
+          <PaginationControlled count={5} />
+        </div>
       </div>
     </Wrapper>
   )
