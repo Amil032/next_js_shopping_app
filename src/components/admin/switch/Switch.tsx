@@ -18,7 +18,7 @@ export default function CustomizedSwitches({ id }: Props) {
         padding: 0,
         display: 'flex',
         borderRadius: 20,
-        border: `1px solid ${checked ? '#2f399789' : 'white'}`,
+        border: `1px solid ${checked ? '#1976D2' : 'white'}`,
         '&:active': {
             '& .MuiSwitch-thumb': {
                 width: 15,
@@ -33,7 +33,7 @@ export default function CustomizedSwitches({ id }: Props) {
 
             '&.Mui-checked': {
                 transform: 'translateX(24px)',
-                color: 'blue',
+                color: '#1976D2',
                 '& + .MuiSwitch-track': {
                     opacity: 1,
                     backgroundColor: theme.palette.mode === 'dark' ? 'red' : '#F7F7F9',

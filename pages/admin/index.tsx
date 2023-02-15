@@ -18,9 +18,15 @@ export default function Admin({ categories, products }: Props) {
   return (
     <Wrapper>
       <div style={{ display: "flex", padding: '5px', boxSizing: 'border-box', width: '100%', justifyContent: 'center', paddingTop: '50px', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
           <Search width="50%" />
-          <AddProducts categories={categories} />
+          <div style={{
+            display: 'flex', width: '50%',
+            justifyContent: 'flex-end', padding: '20px 0', boxSizing: 'border-box'
+          }}>
+            <AddProducts categories={categories} />
+          </div>
+
         </div>
         <div style={{ height: '80%', padding: '40px 20px', overflowY: 'scroll', marginTop: '20px' }}>
           <Tables products={products.products} />

@@ -27,8 +27,8 @@ export const CustomText: React.FC<Props> = ({
             marginTop: mT ? mT + 'px' : 0,
             marginRight: mR ? mR + 'px' : 0,
             lineHeight: lineHeight ? lineHeight + 'px' : '24px',
-            fontFamily: 'Inter',
-            fontWeight: weight ? weight : 400,
+            fontFamily: 'sans-serif',
+            fontWeight: weight ? weight : '400',
             ...style,
         }}
             id={id}
