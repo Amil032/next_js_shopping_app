@@ -28,7 +28,7 @@ export default function Admin({ categories, products }: Props) {
           </div>
 
         </div>
-        <div style={{ height: '50vh', padding: '40px 20px', marginTop: '20px',overflowY:'scroll',position:'relative' }}>
+        <div style={{padding: '40px 20px', marginTop: '20px',position:'relative' }}>
           <Tables products={products.products} />
         </div>
         <div style={{ margin: '0 auto' }}>
