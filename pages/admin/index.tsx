@@ -18,7 +18,7 @@ export default function Admin({ categories, products }: Props) {
   return (
     <Wrapper>
       <div style={{ display: "flex", padding: '5px', boxSizing: 'border-box', width: '100%', justifyContent: 'center', paddingTop: '50px', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Search width="50%" />
           <div style={{
             display: 'flex', width: '50%',
@@ -28,7 +28,7 @@ export default function Admin({ categories, products }: Props) {
           </div>
 
         </div>
-        <div style={{ height: '80%', padding: '40px 20px', overflowY: 'scroll', marginTop: '20px' }}>
+        <div style={{ height: '50vh', padding: '40px 20px', marginTop: '20px',overflowY:'scroll',position:'relative' }}>
           <Tables products={products.products} />
         </div>
         <div style={{ margin: '0 auto' }}>
