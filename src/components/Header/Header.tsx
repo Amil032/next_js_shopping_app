@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getCategories } from '../../api/services/categories.service'
-import { setAllCategories } from '../../store/slices/categories'
 import useWindowDimensions from '../hooks/getScreenSize'
 import { FixedBottomNavigation } from '../mobile/bottom-navbar/BottomNavigation'
 import { NavBarMobile } from '../mobile/Navbar/NavBar'
@@ -17,9 +15,9 @@ export const Header = ({ children }: { children: JSX.Element }) => {
   const router = useRouter()
   console.log(router)
   if (router.asPath.includes('admin')) {
-    return <>
+    return <div style={{ margin: '0', padding: '0', width: '100%', boxSizing: 'border-box' }}>
       {children}
-    </>
+    </div>
   }
   // const { data, isSuccess } = useQuery(['todos'], getCategories)
   // isSuccess && dispatch(setAllCategories(data.data))

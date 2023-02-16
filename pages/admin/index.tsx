@@ -9,6 +9,10 @@ import { Tables } from '../../src/components/admin/table/Table';
 import { getAllProducts } from '../../src/api/services/products.service';
 import { Product } from '../api/admin/upload';
 import { PaginationControlled } from '../../src/components/admin/pagination/Pagination';
+import { AutoCompleteDropDown } from '../../src/components/admin/autoComplete/AutoCompleteDropDown';
+import { CheckBox } from '../../src/components/admin/checkBox/CheckBox';
+
+
 interface Props {
   categories: CategoryProps
   products: { products: Product[] }
@@ -17,18 +21,16 @@ export default function Admin({ categories, products }: Props) {
   console.log(products.products)
   return (
     <Wrapper>
-      <div style={{ display: "flex", padding: '5px', boxSizing: 'border-box', width: '100%', justifyContent: 'center', paddingTop: '50px', flexDirection: 'column' }}>
+      <div style={{ display: "flex", boxSizing: 'border-box', width: '100%', justifyContent: 'center', flexDirection: 'column' }}>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <Search width="50%" />
-          <div style={{
-            display: 'flex', width: '50%',
-            justifyContent: 'flex-end', padding: '20px 0', boxSizing: 'border-box'
-          }}>
-            <AddProducts categories={categories} />
-          </div>
-
+          <Search />
+          <AutoCompleteDropDown />
+          <AutoCompleteDropDown />
+          <CheckBox title='isNewProduct' />
+          <CheckBox title='isBestSelling' />
+          <AddProducts categories={categories} />
         </div>
-        <div style={{padding: '40px 20px', marginTop: '20px',position:'relative' }}>
+        <div style={{ padding: '40px 20px', marginTop: '20px', width: '85vw' }}>
           <Tables products={products.products} />
         </div>
         <div style={{ margin: '0 auto' }}>

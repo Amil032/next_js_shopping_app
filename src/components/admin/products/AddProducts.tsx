@@ -72,9 +72,9 @@ export const AddProducts = ({ categories }: Props) => {
             <div className={[classes.main_container].join(" ")} >
                 <form className={classes.form} onSubmit={submitHandler}>
                     <div className={[classes.name, classes.common].join(" ")}>
-                        <TextField name='name' id="name" label="Product name" variant="outlined" onChange={changeHandler} />
-                        <TextField sx={{ width: 70 }} name='price' type="number" label="price" onChange={changeHandler} />
-                        <TextField name='count' type="number" label="Count" onChange={changeHandler} sx={{ width: 70 }} />
+                        <TextField name='name' id="name" label="Product name" variant="outlined" onChange={changeHandler} size='small' />
+                        <TextField sx={{ width: 70 }} name='price' type="number" label="price" onChange={changeHandler} size='small' />
+                        <TextField name='count' type="number" label="Count" onChange={changeHandler} sx={{ width: 70 }} size='small' />
                     </div>
                     <div style={{ display: 'flex', marginBottom: '20px' }}>
                         <div>

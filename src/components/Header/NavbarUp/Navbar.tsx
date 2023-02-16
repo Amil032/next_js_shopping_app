@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { navigationConsts } from '../../../consts/navigation-consts'
 import { Contact } from './Contact'
 import classes from './Index.module.css'
