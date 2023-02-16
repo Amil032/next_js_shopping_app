@@ -60,7 +60,7 @@ export const Tables = ({ products }: Props) => {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 440 }}>
+      <TableContainer sx={{ maxHeight:'70vh ' }}>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>

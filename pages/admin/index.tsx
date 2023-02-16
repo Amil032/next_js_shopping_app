@@ -11,7 +11,7 @@ import { Product } from '../api/admin/upload';
 import { PaginationControlled } from '../../src/components/admin/pagination/Pagination';
 import { AutoCompleteDropDown } from '../../src/components/admin/autoComplete/AutoCompleteDropDown';
 import { CheckBox } from '../../src/components/admin/checkBox/CheckBox';
-
+import classes from './style.module.scss'
 
 interface Props {
   categories: CategoryProps
@@ -22,20 +22,21 @@ export default function Admin({ categories, products }: Props) {
   return (
     <Wrapper>
       <div style={{ display: "flex", boxSizing: 'border-box', width: '100%', justifyContent: 'center', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className={classes.searchFilter}>
           <Search />
           <AutoCompleteDropDown />
           <AutoCompleteDropDown />
           <CheckBox title='isNewProduct' />
           <CheckBox title='isBestSelling' />
-          <AddProducts categories={categories} />
+       
         </div>
-        <div style={{ padding: '40px 20px', marginTop: '20px', width: '85vw' }}>
+        <AddProducts categories={categories} />
+        <div style={{ marginTop: '20px', width: '85vw' }}>
           <Tables products={products.products} />
         </div>
-        <div style={{ margin: '0 auto' }}>
+        {/* <div style={{ margin: '0 auto' }}>
           <PaginationControlled count={5} />
-        </div>
+        </div> */}
       </div>
     </Wrapper>
   )
