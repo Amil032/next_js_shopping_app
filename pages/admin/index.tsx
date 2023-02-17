@@ -1,64 +1,12 @@
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
-import axios from 'axios';
-import Modal from '../../src/components/admin/reusable-components/modal/Modal';
-import { AddProducts } from '../../src/components/admin/products/AddProducts';
-import { Wrapper } from '../../src/components/admin/wrapper/Wrapper';
-import { CategoryProps } from '../../src/types/types';
-import Search from '../../src/components/Header/NavbarDown/Search';
-import { Tables } from '../../src/components/admin/table/Table';
-import { getAllProducts } from '../../src/api/services/products.service';
-import { Product } from '../api/admin/upload';
-import { PaginationControlled } from '../../src/components/admin/pagination/Pagination';
-import { AutoCompleteDropDown } from '../../src/components/admin/autoComplete/AutoCompleteDropDown';
-import { CheckBox } from '../../src/components/admin/checkBox/CheckBox';
-import classes from './style.module.scss'
+export default function Admin() {
+    const router = useRouter()
+    useEffect(() => {
+        router.push('admin/products')
+    }, [])
 
-interface Props {
-  categories: CategoryProps
-  products: { products: Product[] }
-}
-export default function Admin({ categories, products }: Props) {
-  console.log(products.products)
-  return (
-    <Wrapper>
-      <div style={{ display: "flex", boxSizing: 'border-box', width: '100%', justifyContent: 'center', flexDirection: 'column' }}>
-        <div className={classes.searchFilter}>
-          <Search />
-          <AutoCompleteDropDown />
-          <AutoCompleteDropDown />
-          <CheckBox title='isNewProduct' />
-          <CheckBox title='isBestSelling' />
-       
-        </div>
-        <AddProducts categories={categories} />
-        <div style={{ marginTop: '20px', width: '85vw' }}>
-          <Tables products={products.products} />
-        </div>
-        {/* <div style={{ margin: '0 auto' }}>
-          <PaginationControlled count={5} />
-        </div> */}
-      </div>
-    </Wrapper>
-  )
-}
-export async function getStaticProps() {
-  const getAllCategories = async () => {
-    const data = await axios.get("http://localhost:3000/api/category");
-    const res = await data.data
-    return res
-  }
-  const getProducts = async () => {
-    const products = await getAllProducts()
-    return products
-  }
 
-  const products = await getProducts()
-  const data = await getAllCategories()
-
-  return {
-    props: {
-      categories: data,
-      products: products
-    }
-  }
+    return null
 }

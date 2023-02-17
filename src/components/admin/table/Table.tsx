@@ -60,14 +60,14 @@ export const Tables = ({ products }: Props) => {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight:'70vh ' }}>
+      <TableContainer sx={{ maxHeight: '70vh ' }}>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
               {Object.keys(products[0])?.map((item) => (
-                //                             //                     <th>{item}</th>
                 <TableCell
                   key={item}
+                  align='center'
                 >
                   <CustomText color={'#718096'} text={item} weight={500} />
                 </TableCell>

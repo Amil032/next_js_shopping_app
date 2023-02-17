@@ -10,7 +10,7 @@ export default function CustomizedInputBase({ width }: Props) {
   return (
     <Paper component='form' sx={{ display: 'flex', alignItems: 'center', height: 40 }} style={{ width: width ? width : 'auto' }}>
       <InputBase sx={{ ml: 1, flex: 1 }} placeholder='Search' />
-      <IconButton type='button' sx={{ p: '10px' }} aria-label='search'>
+      <IconButton type='button' sx={{ p: '10px' }} aria-label='search' size='small'>
         <SearchIcon />
       </IconButton>
     </Paper>

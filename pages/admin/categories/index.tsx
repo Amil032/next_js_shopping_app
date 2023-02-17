@@ -1,16 +1,19 @@
 import { AddAPhoto, CategoryOutlined, CategorySharp, CreateOutlined, PlusOneOutlined } from '@mui/icons-material';
-import { Autocomplete, Button, IconButton, TextField } from '@mui/material';
+import { Autocomplete, Box, Button, IconButton, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { Wrapper } from '../../../src/components/admin/wrapper/Wrapper';
-import { DropDown } from '../../../src/components/drop-down-list';
-import { SHowHide } from '../../../src/components/admin/show-hide/ShowHide';
-
+import classes from './style.module.scss'
+import CategoriesTable from '../../../src/components/admin/categories/categoriesTable/CategoriesTable';
+import AddIcon from '@mui/icons-material/Add';
+import { AllCategories } from '../../../src/components/admin/categories/AllCategories';
 export default function () {
 
   return (
     <Wrapper>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <h1>Admin category page</h1>
+      <div className={classes.main}>
+        <AllCategories title='Category' />
+        <AllCategories title='Subcategory' />
+
       </div>
     </Wrapper>
   );
