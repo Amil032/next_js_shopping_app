@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { readFile } from '../../../api-helper/utils/readFile';
 import { setProducts } from '../../../api-helper/controller/product-controller';
+import { createSquence } from '../../../api-helper/controller/squence-controller';
 export type Product = {
   name: string;
   price: number;
@@ -29,9 +30,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     } catch (error) {
       await fs.mkdir(path.join(process.cwd() + '/public', '/images'));
     }
-
+  
   let z = await readFile(req, '/public/images', true);
+  
   console.log(z.fields);
   console.log({ ...z.files.file }.filepath);
-  setProducts({ ...z.fields, imageUrl: { ...z.files.file }.filepath }, res);
+  setProducts({ ...z.fields,imageUrl: { ...z.files.file }.filepath }, res);
 }

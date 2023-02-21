@@ -57,20 +57,23 @@ export const Tables = ({ products }: Props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
+  const arr = ['__v', '_id']
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: '70vh ' }}>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
-              {Object.keys(products[0])?.map((item) => (
-                <TableCell
-                  key={item}
-                  align='center'
-                >
-                  <CustomText color={'#718096'} text={item} weight={500} />
-                </TableCell>
+              {products.length>0&&Object.keys(products[0])?.map((item) => (
+               
+                  !arr.includes(item) ?
+                    <TableCell
+                      key={item}
+                      align='center'
+                    >
+                      <CustomText color={'#718096'} text={item} weight={500} />
+                    </TableCell> : null
+                
               ))}
               <TableCell align='center'>
                 <CustomText color={'#718096'} text='Active' weight={500} />
@@ -84,8 +87,8 @@ export const Tables = ({ products }: Props) => {
             {products.map((item) => (
               <TableRow key={Math.random()}>
                 {Object.entries(item).map((item) => (
-                  <TableCell align='center'>{item[0] === 'imageUrl' ? <img src={`${item[1].toString().split('public')[1]}`} width="40px" /> :
-                    <CustomText text={item[1] === true ? 'y' : item[1] === false ? 'n' : item[1] as string} weight={500} />}</TableCell>
+                  !arr.includes(item[0]) ?<TableCell align='center'>{item[0] === 'imageUrl' ? <img src={`${item[1].toString().split('public')[1]}`} width="40px" /> :
+                    <CustomText text={item[1] === true ? 'y' : item[1] === false ? 'n' : item[1] as string} weight={500} />}</TableCell>:null
                 ))}
                 <TableCell align='center'>
                   <div className={classes.switchContainer}>
